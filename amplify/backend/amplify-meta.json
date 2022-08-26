@@ -1,0 +1,58 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-black-dev-174842-authRole",
+      "UnauthRoleArn": "arn:aws:iam::043554007546:role/amplify-black-dev-174842-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::043554007546:role/amplify-black-dev-174842-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-black-dev-174842-deployment",
+      "UnauthRoleName": "amplify-black-dev-174842-unauthRole",
+      "StackName": "amplify-black-dev-174842",
+      "StackId": "arn:aws:cloudformation:ap-south-1:043554007546:stack/amplify-black-dev-174842/391c6840-2539-11ed-b3b4-0ae0e00a2082",
+      "AmplifyAppId": "d2oaj1xlquc1g0"
+    }
+  },
+  "auth": {
+    "black26ec8b0726ec8b07": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL",
+          "PHONE_NUMBER"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "ON",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-black-dev-174842-deployment/amplify-cfn-templates/auth/black26ec8b0726ec8b07-cloudformation-template.json",
+        "logicalId": "authblack26ec8b0726ec8b07"
+      },
+      "lastPushTimeStamp": "2022-08-26T13:53:27.152Z",
+      "output": {
+        "CreatedSNSRole": "arn:aws:iam::043554007546:role/sns26ec8b07174842-dev",
+        "UserPoolId": "ap-south-1_KJWyaKPH9",
+        "AppClientIDWeb": "uf2c76ha9nafh0egfc47rumn4",
+        "AppClientID": "6v03294ct5chnsr9rhup3gkhqc",
+        "IdentityPoolId": "ap-south-1:aaa9eaae-8f96-43eb-9fa9-0beb83677e10",
+        "UserPoolArn": "arn:aws:cognito-idp:ap-south-1:043554007546:userpool/ap-south-1_KJWyaKPH9",
+        "IdentityPoolName": "black26ec8b07_identitypool_26ec8b07__dev",
+        "UserPoolName": "black26ec8b07_userpool_26ec8b07"
+      },
+      "lastPushDirHash": "bX9sh+YM8pogFo/qGMPFfp2rpks="
+    }
+  }
+}
