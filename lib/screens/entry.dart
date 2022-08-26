@@ -1,10 +1,5 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:flutter/material.dart';
-import 'package:amplify_core/amplify_core.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:amplify_analytics_pinpoint/amplify_analytics_pinpoint.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:black/amplifyconfiguration.dart';
 import 'package:black/screens/sign_up.dart';
