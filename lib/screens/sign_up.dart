@@ -1,34 +1,30 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:black/auth_bloc/auth_bloc.dart';
+import 'package:black/auth_bloc/auth_event.dart';
+import 'package:black/screens/account_confirmation_screen.dart';
 
 import 'package:flutter/material.dart';
 
-class SignUp extends StatelessWidget {
-  SignUp({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  AuthenticationBloc authBloc;
+  SignUp({Key? key, required this.authBloc}) : super(key: key);
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
   TextEditingController _username = TextEditingController();
-  TextEditingController _phone = TextEditingController();
+
   TextEditingController _email = TextEditingController();
+
   TextEditingController _password = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  Future<void> _awssignup() async {
-    try {
-      Map<dynamic, dynamic> userAttributes = {
-        "user": _username.text,
-
-        // additional attributes as needed
-      };
-      SignUpResult res = await Amplify.Auth.signUp(
-          username: _phone.text.trim(),
-          password: _password.text.trim(),
-          options: CognitoSignUpOptions(userAttributes: {
-            CognitoUserAttributeKey.email: _username.text.trim(),
-            CognitoUserAttributeKey.phoneNumber: _phone.text.trim(),
-          }));
-    } on Exception catch (e) {
-      print(e);
-    }
-  }
+  bool showConfirmationPage = false;
+  bool loading = false;
 
   void _submit() async {
     final isValid = _formKey.currentState!.validate();
@@ -37,8 +33,15 @@ class SignUp extends StatelessWidget {
     }
     _formKey.currentState!.save();
 
-    await _awssignup();
     print("${_username.text} and  ${_password.text}");
+    widget.authBloc.add(
+      AuthenticationSignUpEvent(
+        username: _username.text.trim(),
+        email: _email.text.trim(),
+        phoneNumber: _username.text.trim(),
+        password: _password.text.trim(),
+      ),
+    );
   }
 
   @override
@@ -63,9 +66,9 @@ class SignUp extends StatelessWidget {
                     }),
                 SizedBox(height: 20),
                 TextFormField(
-                  controller: _phone,
+                  controller: _email,
                   decoration: InputDecoration(
-                    labelText: "phone",
+                    labelText: "email",
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
